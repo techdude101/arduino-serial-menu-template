@@ -1,11 +1,14 @@
 /*
  * Author: Mark McKee
- * Version: 0.1
+ * Version: 0.2
  * Filename: Serial_Menu.ino
+ * Changelog: 
+ * 2023-10-10 21:00 Fixed bug #1 - IO pin toggles repeatedly when serial port is opened
  */
 
 #define BAUD_RATE 115200
 #define SERIAL_READ_BUFFER_SIZE 8
+#define IO_PIN 9
 
 bool led_state_on = false;
 
@@ -32,7 +35,7 @@ void setup() {
   // 3. do something depending on menu option selected
   
   Serial.begin(BAUD_RATE);
-  pinMode(LED_BUILTIN, OUTPUT);
+  pinMode(IO_PIN, OUTPUT);
 }
 
 void loop() {
@@ -61,7 +64,7 @@ void loop() {
       case 'h':
         if (led_state_on == false) {
           led_state_on = true;
-          digitalWrite(LED_BUILTIN, HIGH);
+          digitalWrite(IO_PIN, HIGH);
         }
         Serial.println("On");
         
@@ -71,7 +74,7 @@ void loop() {
       case 'l':
       if (led_state_on == true) {
           led_state_on = false;
-          digitalWrite(LED_BUILTIN, LOW);
+          digitalWrite(IO_PIN, LOW);
         }
         Serial.println("Off");
         
