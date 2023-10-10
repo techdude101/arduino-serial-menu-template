@@ -1,9 +1,10 @@
 /*
  * Author: Mark McKee
- * Version: 0.2
+ * Version: 0.3
  * Filename: Serial_Menu.ino
  * Changelog: 
  * 2023-10-10 21:00 Fixed bug #1 - IO pin toggles repeatedly when serial port is opened
+ * 2023-10-10 21:09 Fixed bug #2 - Serial Menu Is Not Displayed Correctly in PuTTY
  */
 
 #define BAUD_RATE 115200
@@ -25,8 +26,8 @@ bool led_state_on = false;
 ///
 ////////////////////////////////////////////////////////////////////////////////
 void serial_menu_display(void) {
-  Serial.print("Serial Menu:\n\n");
-  Serial.print("H - Set pin HIGH\nL - Set pin LOW\nS - Get pin state\n");
+  Serial.print("Serial Menu:\r\n\r\n");
+  Serial.print("H - Set pin HIGH\r\nL - Set pin LOW\r\nS - Get pin state\r\n");
 }
 
 void setup() {
